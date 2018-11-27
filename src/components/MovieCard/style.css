@@ -1,16 +1,7 @@
-.MovieList {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -ms-flex: 0 0 62%;
-    flex: 0 0 62%;
-}
-
 .MovieCard {
     position: relative;
-    -ms-flex: 0 0 32%;
-    flex: 0 0 32%;
+    -ms-flex: 0 0 29%;
+    flex: 0 0 29%;
     margin-right: 2%;
     padding: 8px;
     margin-bottom: 16px;

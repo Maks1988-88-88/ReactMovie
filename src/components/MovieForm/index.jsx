@@ -1,39 +1,36 @@
 import React from "react";
 import v4 from "uuid/v4";
-import PropTypes from "prop-types";
 import "./style.css";
-
 
 class MovieForm extends React.Component {
   render() {
-    const ratingScores = ['1','2','3','4','5','6','7','8','9','10']
+    const ratingScores = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
     const ratingScore = ratingScores.map(rating => (
-      <option value={rating}>{rating}</option>
+      <option value={rating} key={v4()}>
+        {rating}
+      </option>
     ));
-    return <form class="MovieForm">
-        <label class="MovieForm__label">
+    return (
+      <form className="MovieForm">
+        <label className="MovieForm__label">
           Title
-          <input type="text" class="MovieForm__input" />
+          <input type="text" className="MovieForm__input" />
         </label>
-        <label class="MovieForm__label">
+        <label className="MovieForm__label">
           Description
-          <textarea class="MovieForm__txtarea" rows="8" />
+          <textarea className="MovieForm__txtarea" rows="8" />
         </label>
-        <label class="MovieForm__label">
+        <label className="MovieForm__label">
           Rating
-          <select class="MovieForm__input">
-            {ratingScore}
-          </select>
+          <select className="MovieForm__input">{ratingScore}</select>
         </label>
-        <button class="MovieForm__submit" type="submit">
+        <button className="MovieForm__submit" type="submit">
           submit
         </button>
-      </form>;
+      </form>
+    );
   }
 }
 
-// AppBody.prototypes = {
-//   headerLogo: PropTypes.string.isRequired
-// };
 
 export default MovieForm;

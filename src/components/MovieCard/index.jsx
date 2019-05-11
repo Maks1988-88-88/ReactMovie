@@ -5,15 +5,19 @@ import PropTypes from "prop-types";
 
 class MovieCard extends React.Component {
   render() {
-    const { tittle, descr, rating, chipsList } = this.props;
-    return <div className="MovieCard">
-        <button className="MovieCard__btn MovieCard__btn--del">
+    const { tittle, descr, rating, chipsList, onClick } = this.props;
+    return (
+      <div className="MovieCard">
+        <button
+          className="MovieCard__btn MovieCard__btn--del"
+          onClick={onClick}
+        >
           delete
         </button>
         <div>
           <h2 className="MovieInfo__title">{tittle}</h2>
           <p className="MovieInfo__descr">{descr} </p>
-          <p className="MovieInfo__rating">Rating:{rating}</p>
+          <p className="MovieInfo__rating">Rating:{rating}/10</p>
           <ul className="ChipsList">
             {chipsList.map(lists => (
               <li className="ChipsList__item" key={v4()}>
@@ -22,7 +26,8 @@ class MovieCard extends React.Component {
             ))}
           </ul>
         </div>
-      </div>;
+      </div>
+    );
   }
 }
 
@@ -32,6 +37,5 @@ MovieCard.propTypes = {
   rating: PropTypes.string.isRequired,
   chipsList: PropTypes.array.isRequired
 };
-
 
 export default MovieCard;

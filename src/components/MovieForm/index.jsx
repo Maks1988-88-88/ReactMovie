@@ -1,48 +1,42 @@
 import React from "react";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import v4 from "uuid/v4";
 import "./style.css";
 
 class MovieForm extends React.Component {
-  // static PropTypes = {
-  //   onFormSubmit: PropTypes.func.isRequired
-  // };
+  static propTypes = {
+    onFormSubmit: PropTypes.func.isRequired
+  };
   state = {
     inputTitleValue: "",
     inputDescriptionValue: "",
     inputRatingValue: ""
   };
 
-  _handleInputChangeTitle = evt => {
+  _handleInputChange = evt => {
     const value = evt.target.value;
+    const name = evt.target.name;
     this.setState({
-      inputTitleValue: value
-    });
-  };
-  _handleInputChangeDescription = evt => {
-    const value = evt.target.value;
-    this.setState({
-      inputDescriptionValue: value
-    });
-  };
-  _handleInputChangeInputRatingValue = evt => {
-    const value = evt.target.value;
-    this.setState({
-      inputRatingValue: value
+      [name]: value
     });
   };
 
   _handleSubmit = evt => {
     evt.preventDefault();
+    const {
+      inputTitleValue,
+      inputDescriptionValue,
+      inputRatingValue
+    } = this.state;
     this.props.onFormSubmit(
-      this.state.inputTitleValue,
-      this.state.inputDescriptionValue,
-      this.state.inputRatingValue
+      inputTitleValue,
+      inputDescriptionValue,
+      inputRatingValue
     );
     this.setState({
       inputTitleValue: "",
       inputDescriptionValue: "",
-      inputRatingValue: ''
+      inputRatingValue: ""
     });
   };
 
@@ -66,7 +60,8 @@ class MovieForm extends React.Component {
             type="text"
             className="MovieForm__input"
             value={inputTitleValue}
-            onChange={this._handleInputChangeTitle}
+            name="inputTitleValue"
+            onChange={this._handleInputChange}
           />
         </label>
         <label className="MovieForm__label">
@@ -76,7 +71,8 @@ class MovieForm extends React.Component {
             rows="8"
             type="text"
             value={inputDescriptionValue}
-            onChange={this._handleInputChangeDescription}
+            name="inputDescriptionValue"
+            onChange={this._handleInputChange}
           />
         </label>
         <label className="MovieForm__label">
@@ -84,7 +80,8 @@ class MovieForm extends React.Component {
           <select
             className="MovieForm__input"
             value={inputRatingValue}
-            onChange={this._handleInputChangeInputRatingValue}
+            name="inputRatingValue"
+            onChange={this._handleInputChange}
           >
             {ratingScore}
           </select>
